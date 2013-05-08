@@ -9,7 +9,7 @@ public class checkConstruct {
     
     public int getConstruct(ReaderFile readerfile, String path) throws IOException {
         for (String line : readerfile.getArrayDataLines()) {
-            if(line.contains(path.concat("(")) && (!line.contains("//")) && (!line.contains("/*"))) {
+            if(line.contains(" " + path.concat("(")) && (!line.contains("//")) && (!line.contains("/*")) && (!line.contains("*/"))) {
                 num++;
             }
         }

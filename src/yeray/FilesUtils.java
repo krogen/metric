@@ -11,7 +11,7 @@ public class FilesUtils {
 
     public int getFilePattern(ReaderFile readerfile, String pattern) throws IOException {
         for (String line : readerfile.getArrayDataLines()) {
-            if (line.contains(pattern)) {
+            if (line.contains(" " + pattern)) {
                 num++;
             }
         }

@@ -73,14 +73,14 @@ public class Parser {
             }
             System.out.println("------------------------------------------------------------");
         }
-        
+
         Metric composite = new Composite();
         Metric clases = new Classes(reader);
         Metric methods = new Methods(reader);
         composite.add(clases);
         composite.add(methods);
-        
+
         System.out.println(composite.getChild(0).getCount());
-         System.out.println(composite.getChild(1).getCount());
+        System.out.println(composite.getChild(1).getCount());
     }
 }

@@ -2,9 +2,15 @@ package yeray;
 
 import java.util.HashMap;
 
-public class Lines implements Metric {
+public final class Lines implements Metric {
 
     private int num = 0;
+    private ReaderFile reader;
+    
+    public Lines(ReaderFile readerfile){
+        this.reader = readerfile;
+        count(readerfile);
+    }
 
     @Override
     public int getCount() {
