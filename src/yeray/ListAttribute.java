@@ -24,9 +24,10 @@ public class ListAttribute {
     private ArrayList<String> prueba;
     private StringOperator op;
 
-    public ListAttribute() {
+    public ListAttribute(String file) {
         this.prueba = new ArrayList<>();
         this.op = new StringOperator();
+        this.file = file;
     }
 
     public boolean isFunction() {
@@ -37,17 +38,23 @@ public class ListAttribute {
         return onClass;
     }
 
-    public ArrayList<String> getAttribute(String file) throws IOException {
-        br = util.getBufferTextLines(file);
-        prueba.add("Clase" + " " + op.getNameConstructs(file));
+    public ArrayList<String> getAttribute(ReaderFile readerfile) throws IOException {
+        //br = util.getBufferTextLines(file);
+        prueba.add("Clase" + " " + op.getNameConstructs(readerfile.getPath()));
+
         semaphoreofattribute = new Semaphore();
-        while ((line = br.readLine()) != null) {
+        //    while ((line = br.readLine()) != null) {
+
+        for (String line : readerfile.getArrayDataLines()) {
+            System.out.println(line);
             if (line.contains("class")) {
                 onClass = true;
             }
             searchListAttribute2();
         }
         System.out.println(prueba.size() - 1);
+        onMethods = false;
+        onClass = false;
         return prueba;
     }
 

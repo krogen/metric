@@ -46,7 +46,7 @@ public class testComposite {
             Metric methods = new Methods(reader);
             Metric lineseffectives = new LinesEffectives(reader);
             Metric lines = new Lines(reader);
-            atributes = new Attribute(path);
+            atributes = new Attribute(path,reader);
             Metric construct = new Construct(reader);
             Metric parameters = new Parameter(reader);
             Metric numfor = new NumberOfFor(reader);

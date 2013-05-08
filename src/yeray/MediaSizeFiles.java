@@ -17,7 +17,7 @@ public final class MediaSizeFiles implements Metric {
         count(null);
     }
 
-    private int getSizeTotalFolder() {
+    public int getSizeTotalFolder() {
         File file;
         ArrayList<String> arrayFiles = folders.getArrayListFiles();
         for (String path : arrayFiles) {

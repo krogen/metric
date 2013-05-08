@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class MethodHash {
+
     private String line;
     private int num = 0;
     private ReaderFile readerFile;
@@ -35,7 +36,7 @@ public class MethodHash {
     private int addListStringMethodsAndNumLines(int braces, HashMap listMethodsAndLines, String method) {
         if (line.contains("}")) {
             if (braces == 0) {
-                listMethodsAndLines.put(getNameMethod(method), num - 1);
+                insertMethodHashmap(listMethodsAndLines, method);
             }
             braces--;
         }
@@ -92,5 +93,13 @@ public class MethodHash {
             braces++;
         }
         return braces;
+    }
+
+    private void insertMethodHashmap(HashMap listMethodsAndLines, String method) {
+        if (num == 0) {
+            listMethodsAndLines.put(getNameMethod(method), num);
+        } else {
+            listMethodsAndLines.put(getNameMethod(method), num - 1);
+        }
     }
 }

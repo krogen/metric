@@ -10,9 +10,11 @@ public class Attribute {
     private NumberAttributeformethods listfor;
     private ListAttribute listattribute;
     private NumberAttribute NumAttribute;
+    private ReaderFile reader;
 
-    public Attribute(String path) {
+    public Attribute(String path, ReaderFile reader) throws IOException {
         this.path = path;
+        this.reader = reader;
     }
 
     public int NumberAttributeGlobal() throws IOException {
@@ -22,8 +24,8 @@ public class Attribute {
     }
 
     public void GetListAttribute() throws IOException {
-        listattribute = new ListAttribute();
-        list = listattribute.getAttribute(path);
+        listattribute = new ListAttribute(this.path);
+        list = listattribute.getAttribute(this.reader);
     }
 
     public ArrayList<Integer> AttributeForMethodo() throws IOException {

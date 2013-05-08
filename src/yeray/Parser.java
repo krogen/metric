@@ -11,7 +11,9 @@ import java.util.Set;
 public class Parser {
 
     public static void main(String[] args) throws IOException {
-
+        double percentEffectives = 0.;
+        int totalLines = 0;
+        int totalEffectives = 0;
         MediaLinesMethods medialinesmethods = null;
 
         ReaderFile reader = new ReaderFile("/Users/gloriav/NetBeansProjects/metric/src/yeray/FilesFolders.java");
@@ -39,6 +41,7 @@ public class Parser {
             if (numMethods.getCount() > 0) {
                 medialinesmethods = new MediaLinesMethods(reader);
             }
+            
             MediaSizeFiles mediasize = new MediaSizeFiles(folder);
 
             System.out.println("Numero de ficheros .java en el directorio: " + numfiles.getCount());
@@ -46,14 +49,29 @@ public class Parser {
             System.out.println("Numero de paquetes efectivos del directorio: " + packages.getCount());
 
             System.out.println("Numero de clases del fichero: " + numclasses.getCount());
-
+      
+            System.out.println("Tamaño total de ficheros del directorio en (bytes): " + mediasize.getSizeTotalFolder() + " bytes");
+            
             System.out.println("Tamaño Medio de ficheros del directorio en (bytes): " + mediasize.getCount());
 
             System.out.println("Numero de lineas: " + reader.getNumLinesFile());
 
+            totalLines += reader.getNumLinesFile();
+
             System.out.println("Numero de lineas efectivas: " + lineseffectives.getCount());
 
+            totalEffectives += lineseffectives.getCount();
+
+            System.out.println("Numero de lineas totales: " + totalLines);
+
+            System.out.println("Numero total de lineas efectivas: " + totalEffectives);
+
+            percentEffectives = (totalEffectives * 100) / totalLines;
+
+            System.out.println("Porcentaje de lineas efectivas: " + percentEffectives + " %");
+
             System.out.println("Numero de metodos y constructores: " + numMethods.getCount());
+
             if (numMethods.getCount() > 0) {
                 if (medialinesmethods.getCount() > 4) {
                     System.out.println("Media de lineas de codigo efectivas de metodos y constructores: " + medialinesmethods.getCount() + " <=====");
@@ -61,6 +79,7 @@ public class Parser {
                     System.out.println("Media de lineas de codigo efectivas de metodos y constructores: " + medialinesmethods.getCount());
                 }
             }
+
             HashMap hm = numMethods.getArrayInfo(reader);
 
             Set set = hm.entrySet();
@@ -74,13 +93,5 @@ public class Parser {
             System.out.println("------------------------------------------------------------");
         }
 
-        Metric composite = new Composite();
-        Metric clases = new Classes(reader);
-        Metric methods = new Methods(reader);
-        composite.add(clases);
-        composite.add(methods);
-
-        System.out.println(composite.getChild(0).getCount());
-        System.out.println(composite.getChild(1).getCount());
     }
 }

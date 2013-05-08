@@ -13,6 +13,7 @@ import java.io.File;
 public class StringOperator {
     private String[] patterns = {"public", "private", "protected"};
     private String line;
+    private File f;
     
     public boolean isConditionType(String line) {
         return (isPatternCondition(line)) ? true : false;
@@ -28,7 +29,7 @@ public class StringOperator {
     }
     
     public String getNameConstructs(String filename) {
-        File f = new File(filename);
+        f = new File(filename);
         String[] namefile = f.getName().split(".java");
         return namefile[0];
     }
