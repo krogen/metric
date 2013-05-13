@@ -1,13 +1,13 @@
 package Principal;
 
-import Files.ReaderFile;
-import ReservedWords.Packages;
-import Files.FilesFolders;
-import Files.MediaSizeFiles;
-import Lines.LinesEffectives;
-import Classes.Classes;
-import Methods.MediaLinesMethods;
-import Methods.Methods;
+import Package.Files.ReaderFile;
+import Class.ReservedWords.Packages;
+import Package.Files.FilesFolders;
+import Package.Files.MediaSizeFiles;
+import Methods.Lines.LinesEffectives;
+import Class.Classes;
+import Methods.Methods.MediaLinesMethods;
+import Methods.Methods.Methods;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ public class Parser {
         int totalEffectives = 0;
         MediaLinesMethods medialinesmethods = null;
 
-        ReaderFile reader = new ReaderFile("/Users/gloriav/NetBeansProjects/metric/src/yeray/FilesFolders.java");
+        ReaderFile reader = new ReaderFile("/Users/gloriav/NetBeansProjects/metric/src/.java");
 
         File folder = new File("/Users/gloriav/NetBeansProjects/metric/src/");
 
