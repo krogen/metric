@@ -7,6 +7,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 
 public final class Methods implements Metric {
 
@@ -54,6 +55,11 @@ public final class Methods implements Metric {
 
     @Override
     public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

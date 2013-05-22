@@ -6,14 +6,14 @@ package Principal;
 
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
-import Class.ReservedWords.Parameter;
-import Class.ReservedWords.Construct;
-import Class.ReservedWords.Packages;
+import Methods.Parameters.Parameter;
+import Class.Construct.Construct;
+import Package.Packages.Packages;
 import Package.Files.FilesFolders;
 import Methods.Lines.LinesEffectives;
-import Class.ReservedWords.NumberOfFor;
-import Class.ReservedWords.NumberOfIf;
-import Class.ReservedWords.NumberOfSwitch;
+import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
+import Methods.ComplexCyclomatic.Conditions.NumberOfIf;
+import Methods.ComplexCyclomatic.Selection.NumberOfCase;
 import Methods.Lines.Lines;
 import Package.Entities.Composite;
 import Methods.Atributtes.Attribute;
@@ -34,7 +34,7 @@ import java.util.Set;
  */
 public class testComposite {
 
-    public static void main(String[] args) throws IOException {
+  /*  public static void main(String[] args) throws IOException {
         Attribute atributes;
         MediaLinesMethods medialinesmethods = null;
 
@@ -62,7 +62,7 @@ public class testComposite {
             Metric methods = new Methods(reader);
             Metric lineseffectives = new LinesEffectives(reader);
             Metric lines = new Lines(reader);
-            atributes = new Attribute(path,reader);
+            atributes = new Attribute(path);
             Metric construct = new Construct(reader);
             Metric parameters = new Parameter(reader);
             Metric numfor = new NumberOfFor(reader);
@@ -87,5 +87,5 @@ public class testComposite {
             System.out.println(atributes.NumberAttributeGlobal());
             System.out.println("------------------------------------------------------------");
         }
-    }
+    }*/
 }

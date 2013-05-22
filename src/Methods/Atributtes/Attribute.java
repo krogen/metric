@@ -1,41 +1,77 @@
 package Methods.Atributtes;
 
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.io.IOException;
 import java.util.ArrayList;
-import Package.Files.ReaderFile;
+import java.util.HashMap;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
-public class Attribute {
+public class Attribute implements Metric {
 
     private String path;
     private ArrayList<String> list;
-    private NumberAttributeformethods listfor;
-    private ListAttribute listattribute;
-    private NumberAttribute NumAttribute;
-    private ReaderFile reader;
+    private int num;
 
-    public Attribute(String path, ReaderFile reader) throws IOException {
-        this.path = path;
-        this.reader = reader;
-        NumberAttributeGlobal();
-        GetListAttribute();
-        AttributeForMethodo();
-        
+    public Attribute(ReaderFile reader) {
+        this.path = reader.getPath();
+        count(reader);
     }
 
     public int NumberAttributeGlobal() throws IOException {
-        NumAttribute = new NumberAttribute();
-        AttributeForMethodo();
+        NumberAttribute NumAttribute = new NumberAttribute();
         return NumAttribute.getAttribute(path);
     }
 
     public void GetListAttribute() throws IOException {
-        listattribute = new ListAttribute(this.path);
-        list = listattribute.getAttribute(this.reader);
+        ListAttribute listattribute = new ListAttribute();
+        list = listattribute.getAttribute(path);
     }
 
     public ArrayList<Integer> AttributeForMethodo() throws IOException {
         GetListAttribute();
-        listfor = new NumberAttributeformethods(list);
+        NumberAttributeformethods listfor = new NumberAttributeformethods(list);
         return listfor.getAttribute(path);
+    }
+
+    @Override
+    public void add(Metric d) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void remove(Metric d) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public int getCount() {
+        return num;
+    }
+
+    @Override
+    public void count(ReaderFile readerfile) {
+        try {
+            num = NumberAttributeGlobal();
+        } catch (IOException ex) {
+            Logger.getLogger(Attribute.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public HashMap getArrayInfo(ReaderFile readerfile) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

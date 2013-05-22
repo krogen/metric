@@ -1,14 +1,11 @@
 package Package.Entities;
 
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import Package.Files.ReaderFile;
 
-/**
- *
- * @author yeray
- */
 public class Composite implements Metric {
 
     private List<Metric> listMetrics = new ArrayList();
@@ -47,5 +44,10 @@ public class Composite implements Metric {
     public HashMap getArrayInfo(ReaderFile readerfile) {
         return null;
         //throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }

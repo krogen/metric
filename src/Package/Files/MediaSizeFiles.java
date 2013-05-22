@@ -11,11 +11,12 @@ public final class MediaSizeFiles implements Metric {
     private File folder;
     private FilesFolders folders;
     private long size = 0;
+    private ReaderFile readerfile = null;
 
     public MediaSizeFiles(File folder) {
         this.folder = folder;
         folders = new FilesFolders(folder);
-        count(null);
+        count(this.readerfile);
     }
 
     public int getSizeTotalFolder() {
@@ -55,6 +56,11 @@ public final class MediaSizeFiles implements Metric {
 
     @Override
     public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

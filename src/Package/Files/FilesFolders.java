@@ -82,4 +82,9 @@ public final class FilesFolders implements Metric {
     public Metric getChild(int i) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
 }

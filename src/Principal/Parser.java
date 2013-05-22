@@ -1,13 +1,14 @@
 package Principal;
 
-import Package.Files.ReaderFile;
-import Class.ReservedWords.Packages;
-import Package.Files.FilesFolders;
-import Package.Files.MediaSizeFiles;
-import Methods.Lines.LinesEffectives;
 import Class.Classes;
+import Methods.Lines.LinesEffectives;
 import Methods.Methods.MediaLinesMethods;
 import Methods.Methods.Methods;
+import Package.Files.FilesFolders;
+import Package.Files.MediaSizeFiles;
+import Package.Files.ReaderFile;
+import Package.Packages.Packages;
+import Package.Utils.FilesUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,7 +25,7 @@ public class Parser {
         int totalEffectives = 0;
         MediaLinesMethods medialinesmethods = null;
 
-        ReaderFile reader = new ReaderFile("/Users/gloriav/NetBeansProjects/metric/src/.java");
+        ReaderFile reader = new ReaderFile("/Users/gloriav/NetBeansProjects/metric/src/Class/Classes.java");
 
         File folder = new File("/Users/gloriav/NetBeansProjects/metric/src/");
 
@@ -49,6 +50,7 @@ public class Parser {
             if (numMethods.getCount() > 0) {
                 medialinesmethods = new MediaLinesMethods(reader);
             }
+            
             
             MediaSizeFiles mediasize = new MediaSizeFiles(folder);
 
@@ -87,7 +89,7 @@ public class Parser {
                     System.out.println("Media de lineas de codigo efectivas de metodos y constructores: " + medialinesmethods.getCount());
                 }
             }
-
+            
             HashMap hm = numMethods.getArrayInfo(reader);
 
             Set set = hm.entrySet();

@@ -1,61 +1,51 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Methods.Atributtes;
 
+import Package.Entities.Semaphore;
+import Package.Utils.Util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import Package.Entities.Semaphore;
 import Package.Entities.StringOperator;
-import Package.Utils.Util;
 
-/**
- *
- * @author Daniel
- */
 public class NumberAttributeformethods {
      private Util util = new Util();
      private BufferedReader br;
      private String line;
-     private String file;
-     private boolean onClass = false;
-     private boolean onMethods = false;
      private Semaphore semaphoreofattribute;
      private ArrayList<Integer> prueba;
      private ArrayList<String> listattribute;
      private ArrayList<String> lista;
      private StringOperator op;
      private int cont = 0;
+     private PreferencAttribute preferencAttribute = new PreferencAttribute();
      
     
     public NumberAttributeformethods(ArrayList<String> list){
-        prueba = new ArrayList<>();
+        this.prueba = new ArrayList<>();
         listattribute = new ArrayList<>();
         listattribute = list;
         this.op = new StringOperator();
     }
     
-    
     public ArrayList<Integer> getAttribute(String file) throws IOException{
-        br = util.getBufferTextLines(file);
-        semaphoreofattribute = new Semaphore();
-        while ((line = br.readLine()) != null) {
-            if(line.contains("class")) onClass = true;
-            searchListAttribute();
-        }
+        runfile(file);
         return prueba;
     }
     
+    public void runfile(String file) throws IOException{
+        br = util.getBufferTextLines(file);
+        semaphoreofattribute = new Semaphore();
+        while ((line = br.readLine()) != null) { searchListAttribute(); }
+    }
+    
     public void searchListAttribute(){
-         if(isFunction() && !line.contains("main"))inicializeattributemethods();
-         if(onMethods == true)operatorSemaphore();
+         if(op.isFunction(line) && !line.contains("main"))inicializeattributemethods();
+         if(preferencAttribute.OnMethods() == true)operatorSemaphore();
          
      }
     
     public void inicializeattributemethods(){
-        onMethods = true;
+        preferencAttribute.insertMethods(true);
         Copylist();
         cont = 0;
     }
@@ -67,12 +57,12 @@ public class NumberAttributeformethods {
     public void operatorSemaphore(){
         semaphoreofattribute.getBracesLines(line);
         semaphoreofattribute.addListStringMethodsAndNumLines(line);
-        if(semaphoreofattribute.StatusBraces()==0 && onMethods == true) contabilizeattributo();
+        if(semaphoreofattribute.StatusBraces()==0 && preferencAttribute.OnMethods() == true) contabilizeattributo();
         if(semaphoreofattribute.StatusBraces()>0)studyLine();
     }
     
     public void contabilizeattributo(){
-        onMethods = false;
+        preferencAttribute.insertMethods(false);
         prueba.add(cont);
         lista.clear();
      }
@@ -91,8 +81,4 @@ public class NumberAttributeformethods {
         }
         return false;
      }
-     
-    public boolean isFunction() {
-        return (line.contains("void") || line.contains("{") && line.contains("(") && !line.contains("class") && !line.contains(op.getNameConstructs(file))) ? true : false;
-    }
 }

@@ -1,13 +1,5 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
 package Package.Entities;
 
-/**
- *
- * @author Daniel
- */
 public class Semaphore {
     
     private int braces = 0;

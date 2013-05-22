@@ -3,10 +3,15 @@ package Methods.Methods;
 import java.util.HashMap;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 
 public class MethodsLines implements Metric {
 
     private int num = 0;
+    
+    public MethodsLines(ReaderFile reader){
+        count(reader);
+    }
 
     @Override
     public int getCount() {
@@ -35,6 +40,11 @@ public class MethodsLines implements Metric {
 
     @Override
     public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

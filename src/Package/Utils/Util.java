@@ -10,11 +10,6 @@ public class Util {
     public Util() {
     }
 
-    public String[] getWords(String line) {
-        String[] words = line.split(" ");//[pal1,pal2,pal3]
-        return words;
-    }
-
     public BufferedReader getBufferTextLines(String file) throws IOException {
         File archivo = null;
         FileReader fr = null;
@@ -36,5 +31,4 @@ public class Util {
         }
         return num;
     }
-    
 }

@@ -60,6 +60,7 @@ public class DataStoreDefinition {
     public static final MetricDefinition PARAMETERS = new MetricDefinition("TotalParameters");
     public static final MetricDefinition CYCLOMATIC_COMPLEXITY = new MetricDefinition("CyclomaticComplexity");
     public static final MetricDefinition CONSTRUCTS = new MetricDefinition("Constructs");
+    public static final MetricDefinition METHOD_NAME = new MetricDefinition("MethodName:");
 
     public static DimensionDefinition[] getDimensions() {
         return new DimensionDefinition[]{MODULES};

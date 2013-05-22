@@ -9,7 +9,7 @@ import org.sumus.dwh.datastore.DataStoreException;
 public class Main {
 
     public static void main(String[] args) throws DataStoreException, FileNotFoundException, IOException {
-        String arguments[] = {"/Users/gloriav/NetBeansProjects/dataStore/", "/Users/gloriav/NetBeansProjects/metric/src/"};
+        String arguments[] = {"D:/JAD/Docs/Proyectos/JAVA/NetBeans/dataStore/", "D:/JAD/Docs/Proyectos/JAVA/NetBeans/metric/src/"};
         init(arguments);
     }
 
@@ -17,13 +17,13 @@ public class Main {
         //checkArgs(args);
         dataStoreDelete();
         DataStore dataStore = createDataStore(new File(args[0]));
-        MockParser parser = new MockParser(dataStore);
+        Parser parser = new Parser(dataStore);
         parser.execute(new File(args[1]));
         dataStore.save();
     }
 
     private static void dataStoreDelete() {
-        deleteWithChildren("/Users/gloriav/NetBeansProjects/dataStore/CodeMetrics");
+        deleteWithChildren("D:/JAD/Docs/Proyectos/JAVA/NetBeans/dataStore/CodeMetrics");
     }
 
     private static boolean deleteWithChildren(String path) {

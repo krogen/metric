@@ -1,8 +1,9 @@
 package Methods.Lines;
 
-import java.util.HashMap;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
+import java.util.HashMap;
 
 public final class Lines implements Metric {
 
@@ -41,6 +42,11 @@ public final class Lines implements Metric {
 
     @Override
     public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 

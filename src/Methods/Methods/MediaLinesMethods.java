@@ -9,6 +9,7 @@ import java.util.Map;
 import java.util.Set;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 
 public final class MediaLinesMethods implements Metric {
 
@@ -64,6 +65,11 @@ public final class MediaLinesMethods implements Metric {
 
     @Override
     public Metric getChild(int i) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    @Override
+    public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }
