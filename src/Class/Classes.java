@@ -27,7 +27,7 @@ public final class Classes implements Metric {
     }
 
     private int getClass(ReaderFile readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "class");
+        return fileutil.getFilePattern(readerfile, "class ");
     }
 
     @Override

@@ -9,21 +9,51 @@ import org.sumus.dwh.datastore.DataStoreException;
 public class Main {
 
     public static void main(String[] args) throws DataStoreException, FileNotFoundException, IOException {
-        String arguments[] = {"D:/JAD/Docs/Proyectos/JAVA/NetBeans/dataStore/", "D:/JAD/Docs/Proyectos/JAVA/NetBeans/metric/src/"};
+        String arguments[] = {"src", "dataStore"};
         init(arguments);
     }
 
     private static void init(String[] args) throws FileNotFoundException, DataStoreException, IOException {
-        //checkArgs(args);
+        checkArgs(args);
         dataStoreDelete();
-        DataStore dataStore = createDataStore(new File(args[0]));
-        Parser parser = new Parser(dataStore);
-        parser.execute(new File(args[1]));
+        DataStore dataStore = createDataStore(new File(args[1]));
+        MockParser parser = new MockParser(dataStore);
+        parser.execute(new File(args[0]));
         dataStore.save();
     }
+    
+    private static DataStore createDataStore(File folder) {
+        DataStoreFactory factory = new DataStoreFactory(folder);
+        DataStore dataStore = factory.createDataStore();
+        return dataStore;
+    }
 
+    private static void checkArgs(String[] args) {
+        checkIsNotNull(args);
+        checkSourceExists(new File(args[0]));
+        checkTargetNotExists(new File(args[1]));
+    }
+
+    private static void checkSourceExists(File sourceDirectory) {
+        if (!sourceDirectory.exists()) {
+            throw new RuntimeException("Source path does not exist");
+        }
+    }
+
+    private static void checkTargetNotExists(File targetDirectory) {
+        if (!targetDirectory.exists()) {
+            throw new RuntimeException("Target path does not exist");
+        }
+    }
+
+    private static void checkIsNotNull(String[] args) {
+        if (args[0] == null || args[1] == null) {
+            throw new RuntimeException("Paths not introduced");
+        }
+    }
+    
     private static void dataStoreDelete() {
-        deleteWithChildren("D:/JAD/Docs/Proyectos/JAVA/NetBeans/dataStore/CodeMetrics");
+        deleteWithChildren("dataStore/CodeMetrics");
     }
 
     private static boolean deleteWithChildren(String path) {
@@ -50,35 +80,5 @@ public class Main {
             }
         }
         return childrenDeleted;
-    }
-
-    private static DataStore createDataStore(File folder) {
-        DataStoreFactory factory = new DataStoreFactory(folder);
-        DataStore dataStore = factory.createDataStore();
-        return dataStore;
-    }
-
-    private static void checkArgs(String[] args) {
-        checkIsNotNull(args);
-        checkSourceExists(new File(args[1]));
-        checkTargetNotExists(new File(args[0]));
-    }
-
-    private static void checkSourceExists(File sourceDirectory) {
-        if (!sourceDirectory.exists()) {
-            throw new RuntimeException("Source path does not exist");
-        }
-    }
-
-    private static void checkTargetNotExists(File targetDirectory) {
-        if (targetDirectory.exists()) {
-            throw new RuntimeException("Target path does not exist");
-        }
-    }
-
-    private static void checkIsNotNull(String[] args) {
-        if (args[0] == null || args[1] == null) {
-            throw new RuntimeException("Paths not introduced");
-        }
     }
 }

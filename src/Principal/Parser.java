@@ -8,7 +8,6 @@ import Package.Files.FilesFolders;
 import Package.Files.MediaSizeFiles;
 import Package.Files.ReaderFile;
 import Package.Packages.Packages;
-import Package.Utils.FilesUtils;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -73,23 +72,23 @@ public class Parser {
             totalEffectives += lineseffectives.getCount();
 
             System.out.println("Numero de lineas totales: " + totalLines);
-
+//
             System.out.println("Numero total de lineas efectivas: " + totalEffectives);
 
             percentEffectives = (totalEffectives * 100) / totalLines;
-
+/**/
             System.out.println("Porcentaje de lineas efectivas: " + percentEffectives + " %");
 
             System.out.println("Numero de metodos y constructores: " + numMethods.getCount());
 
-            if (numMethods.getCount() > 0) {
+            //if (numMethods.getCount() > 0) {
                 if (medialinesmethods.getCount() > 4) {
                     System.out.println("Media de lineas de codigo efectivas de metodos y constructores: " + medialinesmethods.getCount() + " <=====");
                 } else {
                     System.out.println("Media de lineas de codigo efectivas de metodos y constructores: " + medialinesmethods.getCount());
-                }
-            }
-            
+                }/**/
+            //}
+//
             HashMap hm = numMethods.getArrayInfo(reader);
 
             Set set = hm.entrySet();

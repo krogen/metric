@@ -1,12 +1,11 @@
 package Cube.codemetric;
 
-import java.io.File;
-
 import Cube.codemetric.definition.CubeDefinition;
 import Cube.codemetric.definition.DataStoreDefinition;
 import Cube.codemetric.definition.DimensionDefinition;
 import Cube.codemetric.definition.FeatureDefinition;
 import Cube.codemetric.definition.MetricDefinition;
+import java.io.File;
 import org.sumus.dwh.DatawareHouse;
 import org.sumus.dwh.DatawareHouseException;
 import org.sumus.dwh.cube.Cube;

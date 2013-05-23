@@ -19,7 +19,7 @@ public class NumberOfCase implements Metric {
     }
 
     private int getCases(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "case");
+        return fileutil.getFilePattern(readerfile, " case");
     }
 
     @Override

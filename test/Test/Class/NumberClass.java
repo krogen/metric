@@ -18,14 +18,14 @@ public class NumberClass {
     public void totalNumberClass() throws FileNotFoundException, IOException{
         File folder = new File("src");
         FilesFolders numClasses = new FilesFolders(folder);
-        assertEquals(numClasses.getCount(), 57);
+        assertEquals(numClasses.getCount(), 58);
     }
     
     @Test
     public void NumberClassInPackageClass() throws FileNotFoundException, IOException{
         File folder = new File("src/Class");
         FilesFolders numClasses = new FilesFolders(folder);
-        assertEquals(numClasses.getCount(), 5);
+        assertEquals(numClasses.getCount(), 6);
     }
     
     @Test
@@ -37,8 +37,16 @@ public class NumberClass {
     
     @Test
     public void singleNumberClass() throws FileNotFoundException, IOException{
-        ReaderFile reader = new ReaderFile("src/Methods/Lines/Lines.java");
+        ReaderFile reader = new ReaderFile("src/Class/Afference/AfferenceCoupling.java");
         Classes numClasses = new Classes(reader);
         assertEquals(numClasses.getCount(), 1);
     }
+    
+    @Test
+    public void singleNumberClass2() throws FileNotFoundException, IOException{
+        ReaderFile reader = new ReaderFile("src/Class/Classes.java");
+        Classes numClasses = new Classes(reader);
+        assertEquals(numClasses.getCount(), 1);
+    }
+    
 }

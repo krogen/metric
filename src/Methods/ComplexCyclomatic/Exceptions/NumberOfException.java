@@ -19,7 +19,7 @@ public class NumberOfException implements Metric {
     }
 
     private int getExceptions(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "exception");
+        return fileutil.getFilePattern(readerfile, " exception");
     }
 
     @Override

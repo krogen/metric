@@ -24,7 +24,7 @@ public class NumberParameters {
     }
        
     @Test
-    public void NumberParameter() throws FileNotFoundException, IOException{
+    public void NumberParameterByMethod() throws FileNotFoundException, IOException{
         HashMap hm;
         ReaderFile reader = new ReaderFile("src/Class/Classes.java");
         Parameter numparameters = new Parameter(reader);

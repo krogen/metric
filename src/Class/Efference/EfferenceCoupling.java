@@ -1,5 +1,6 @@
-package Methods.ComplexCyclomatic.Exceptions;
+package Class.Efference;
 
+import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
 import Package.Files.ReaderMethod;
@@ -9,17 +10,25 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NumberOfTry implements Metric {
+public class EfferenceCoupling implements Metric {
 
     private FilesUtils fileutil = new FilesUtils();
     private int num = 0;
 
-    public NumberOfTry(ReaderMethod readerfile) {
+    public EfferenceCoupling(ReaderMethod reader) {
+        count(reader);
+    }
+
+    public EfferenceCoupling(ReaderFile readerfile) {
         count(readerfile);
     }
 
-    private int getTrys(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, " try");
+    private int getImports(ReaderMethod readerfile) throws IOException {
+        return fileutil.getFilePattern(readerfile, "import Package.");
+    }
+
+    private int getImports(ReaderFile readerfile) throws IOException {
+        return fileutil.getFilePattern(readerfile, "import Package.");
     }
 
     @Override
@@ -29,6 +38,11 @@ public class NumberOfTry implements Metric {
 
     @Override
     public void count(ReaderFile readerfile) {
+        try {
+            num = getImports(readerfile);
+        } catch (IOException ex) {
+            Logger.getLogger(NumberOfFor.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
@@ -54,9 +68,9 @@ public class NumberOfTry implements Metric {
     @Override
     public void count(ReaderMethod readermethod) {
         try {
-            num = getTrys(readermethod);
+            num = getImports(readermethod);
         } catch (IOException ex) {
-            Logger.getLogger(NumberOfTry.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(NumberOfFor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 }

@@ -1,24 +1,16 @@
 package Methods.ComplexCyclomatic;
 
 import Methods.ComplexCyclomatic.Conditions.NumberOfAnd;
-import Methods.ComplexCyclomatic.Conditions.NumberOfAnd;
+import Methods.ComplexCyclomatic.Conditions.NumberOfDoubleCondition;
+import Methods.ComplexCyclomatic.Conditions.NumberOfIf;
+import Methods.ComplexCyclomatic.Conditions.NumberOfOr;
+import Methods.ComplexCyclomatic.Exceptions.NumberOfTry;
+import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
+import Methods.ComplexCyclomatic.Iterator.NumberOfForeach;
+import Methods.ComplexCyclomatic.Iterator.NumberOfWhile;
 import Methods.ComplexCyclomatic.Selection.NumberOfCase;
 import Methods.ComplexCyclomatic.Selection.NumberOfContinue;
 import Methods.ComplexCyclomatic.Selection.NumberOfDefault;
-import Methods.ComplexCyclomatic.Conditions.NumberOfDoubleCondition;
-import Methods.ComplexCyclomatic.Conditions.NumberOfDoubleCondition;
-import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
-import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
-import Methods.ComplexCyclomatic.Iterator.NumberOfForeach;
-import Methods.ComplexCyclomatic.Iterator.NumberOfForeach;
-import Methods.ComplexCyclomatic.Conditions.NumberOfIf;
-import Methods.ComplexCyclomatic.Conditions.NumberOfIf;
-import Methods.ComplexCyclomatic.Conditions.NumberOfOr;
-import Methods.ComplexCyclomatic.Conditions.NumberOfOr;
-import Methods.ComplexCyclomatic.Exceptions.NumberOfTry;
-import Methods.ComplexCyclomatic.Exceptions.NumberOfTry;
-import Methods.ComplexCyclomatic.Iterator.NumberOfWhile;
-import Methods.ComplexCyclomatic.Iterator.NumberOfWhile;
 import Methods.Methods.MethodHash;
 import Methods.Methods.MethodsFeatury;
 import Package.Entities.Metric;
@@ -43,7 +35,7 @@ public class ComplexCyclomatic implements Metric {
                 complexcyclomatic.put(mh.getNameMethod(line), getNumComplex(readermethod));
             }
         }
-        System.out.println("--------------------------");
+        //System.out.println("--------------------------");
         return complexcyclomatic;
     }
 

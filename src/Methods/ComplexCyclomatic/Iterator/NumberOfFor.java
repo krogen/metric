@@ -19,7 +19,7 @@ public final class NumberOfFor implements Metric {
     }
 
     private int getFors(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "for");
+        return fileutil.getFilePattern(readerfile, " for");
     }
 
     @Override

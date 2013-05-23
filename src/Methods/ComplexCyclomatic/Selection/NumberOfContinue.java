@@ -21,7 +21,7 @@ public final class NumberOfContinue implements Metric {
     }
 
     private int getContinues(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "continue");
+        return fileutil.getFilePattern(readerfile, " continue");
     }
 
     @Override

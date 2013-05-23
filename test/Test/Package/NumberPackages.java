@@ -16,20 +16,27 @@ public class NumberPackages {
     public void totalNumberPackagesSRC() throws FileNotFoundException, IOException{
         File folder = new File("src");
         Packages numPackages = new Packages(folder);
-        assertEquals(numPackages.getCount(), 18);
+        assertEquals(numPackages.getCount(), 19);
     }
     
     @Test
-    public void NumberPackagesInCube() throws FileNotFoundException, IOException{
+    public void NumberPackagesClass() throws FileNotFoundException, IOException{
         File folder = new File("src/Class");
         Packages numPackages = new Packages(folder);
-        assertEquals(numPackages.getCount(), 2);
+        assertEquals(numPackages.getCount(), 3);
+    }
+    
+    @Test
+    public void NumberPackagesMethods() throws FileNotFoundException, IOException{
+        File folder = new File("src/Methods");
+        Packages numPackages = new Packages(folder);
+        assertEquals(numPackages.getCount(), 9);
     }
     
     @Test
     public void totalNumberPackagesTest() throws FileNotFoundException, IOException{
         File folder = new File("test");
         Packages numPackages = new Packages(folder);
-        assertEquals(numPackages.getCount(), 7);
+        assertEquals(numPackages.getCount(), 12);
     }
 }

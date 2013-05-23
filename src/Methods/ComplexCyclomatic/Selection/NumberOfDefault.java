@@ -21,7 +21,7 @@ public final class NumberOfDefault implements Metric {
     }
 
     private int getDefaults(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "default");
+        return fileutil.getFilePattern(readerfile, " default");
     }
 
     @Override

@@ -67,6 +67,6 @@ public class DataStoreDefinition {
     }
 
     public static CubeDefinition[] getCubes() {
-        return new CubeDefinition[]{PACKAGE_CUBE, CLASS_CUBE, METHOD_CUBE};
+        return new CubeDefinition[] {PACKAGE_CUBE, CLASS_CUBE, METHOD_CUBE};
     }
 }

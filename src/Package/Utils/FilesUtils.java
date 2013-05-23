@@ -7,12 +7,12 @@ import java.io.IOException;
 public class FilesUtils {
 
     private int num = 0;
+    private  boolean IsTheSymbol = false;
 
     public FilesUtils() {
     }
 
     public int getFilePattern(ReaderMethod reader, String pattern) throws IOException {
-        boolean IsTheSymbol = false;
         for (String line : reader.getLinesOfMethod()) {
             IsTheSymbol = isInitialBlockComment(line, IsTheSymbol);
             sumarizePatterns(line, pattern, IsTheSymbol);
@@ -22,7 +22,6 @@ public class FilesUtils {
     }
 
     public int getFilePattern(ReaderFile reader, String pattern) throws IOException {
-        boolean IsTheSymbol = false;
         for (String line : reader.getArrayDataLines()) {
             IsTheSymbol = isInitialBlockComment(line, IsTheSymbol);
             sumarizePatterns(line, pattern, IsTheSymbol);
@@ -40,12 +39,14 @@ public class FilesUtils {
 
     private void isFinalBlockComment(String line, boolean IsTheSymbol) {
         if(line.contains("//") || line.contains("*/") && IsTheSymbol == true) {
-            IsTheSymbol = false;
+            this.IsTheSymbol = false;
         }
     }
 
     private void sumarizePatterns(String line, String pattern, boolean IsTheSymbol) {
-        if (line.contains(pattern) && IsTheSymbol == false) {
+        if (line.contains(pattern) && (!line.contains("return")) && (!line.contains("<?")) && IsTheSymbol == false) {
+            num++;
+        }else if(pattern.equals("//") && line.contains("//")){
             num++;
         }
     }

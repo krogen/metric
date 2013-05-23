@@ -17,7 +17,6 @@ import Methods.Parameters.Parameter;
 import Package.Entities.Metric;
 import Package.Files.FilesFolders;
 import Package.Files.ReaderFile;
-import Package.Packages.Packages;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -35,11 +34,11 @@ import org.sumus.dwh.datastore.State;
 import org.sumus.dwh.datastore.Tuple;
 import org.sumus.dwh.dimension.Dimension;
 
-public class Parser {
+public class MockParser {
 
     private final DataStore dataStore;
 
-    public Parser(DataStore dataStore) {
+    public MockParser(DataStore dataStore) {
         this.dataStore = dataStore;
     }
 
@@ -77,13 +76,7 @@ public class Parser {
 
     private void insertPackageTuple(File folder) throws FileNotFoundException, IOException {
         FilesFolders numfiles = new FilesFolders(folder);
-        Packages packages = new Packages(folder);
         ArrayList<String> arrayfiles = numfiles.getArrayListFiles();
-        Context context;
-        AfferenceCoupling afferencecoupling;
-        State state;
-        Tuple factShip;
-        ReaderFile readerfile;
         for (String path : arrayfiles) {
             addTupleInCube(path, arrayfiles);
         }
@@ -114,23 +107,9 @@ public class Parser {
         int ite = 0;
         Metric metrics[] = initializeMetrics(reader, afference);
         String metricdefinition[] = initializeMetricDefinitions();
-        putMetricInStateCube(metrics, state, metricdefinition, ite);
-        putMethodNameParameters(metrics, reader, state);
-        return putCyclomaticComplexMethod(reader, state);
-    }
-
-    private State putCyclomaticComplexMethod(ReaderFile reader, State state) throws NumberFormatException, IOException {
-        ComplexCyclomatic complex = new ComplexCyclomatic();
-        MetricDefinition METHODNAME;
-        HashMap list = complex.getListMethodsCyclomaticComplex(reader);
-        Set set2 = list.entrySet();
-        Iterator i2 = set2.iterator();
-        while (i2.hasNext()) {
-            Map.Entry me2 = (Map.Entry) i2.next();
-            METHODNAME = new MetricDefinition(DataStoreDefinition.CYCLOMATIC_COMPLEXITY + me2.getKey().toString());
-            state.put(METHODNAME.getName(), Double.parseDouble(me2.getValue().toString()));
-        }
-        return state;
+        return putMetricInStateCube(metrics, state, metricdefinition, ite);
+        //putMethodNameParameters(metrics, reader, state);
+        //return putCyclomaticComplexMethod(reader, state);
     }
 
     private Dimension getDimension(DimensionDefinition definition) {
@@ -142,10 +121,18 @@ public class Parser {
     }
 
     private void add(Entity entity) {
+        
+        //System.out.println(entity.getFeatureMap().values());
+        
         getDataStore().insert(entity);
     }
 
     private void add(Tuple tuple) {
+        
+        System.out.println("adios");
+        //System.out.println(tuple.getState().values());
+        
+        
         getDataStore().insert(tuple);
     }
 
@@ -158,14 +145,18 @@ public class Parser {
 
     private Metric[] initializeMetrics(ReaderFile reader, AfferenceCoupling afference) throws IOException {
         Metric metrics[] = {new Lines(reader), new LinesEffectives(reader), new Classes(reader), new Methods(reader),
-            new NumberOfImports(reader), new Parameter(reader), new Construct(reader), new Attribute(reader), afference,};
+            new NumberOfImports(reader), new Parameter(reader), new Construct(reader), new Attribute(reader), afference};
         return metrics;
     }
 
-    private void putMetricInStateCube(Metric[] metrics, State state, String[] metricdefinition, int ite) {
-        for (Metric metric : metrics) {
-            state.put(metricdefinition[ite], (double) metric.getCount());
+    private State putMetricInStateCube(Metric[] metrics, State state, String[] metricdefinition, int ite) {
+        for (String metric : metricdefinition) {
+            if(ite<metricdefinition.length){
+                state.put(metricdefinition[ite], (double) metrics[ite].getCount());
+            }   
+            ite++;
         }
+        return state;
     }
 
     private void putMethodNameParameters(Metric[] metrics, ReaderFile reader, State state) throws NumberFormatException {
@@ -178,5 +169,19 @@ public class Parser {
             METHODNAME = new MetricDefinition(DataStoreDefinition.METHOD_NAME + me.getKey().toString());
             state.put(METHODNAME.getName(), Double.parseDouble(me.getValue().toString()));
         }
+    }
+    
+    private State putCyclomaticComplexMethod(ReaderFile reader, State state) throws NumberFormatException, IOException {
+        ComplexCyclomatic complex = new ComplexCyclomatic();
+        MetricDefinition METHODNAME;
+        HashMap list = complex.getListMethodsCyclomaticComplex(reader);
+        Set set2 = list.entrySet();
+        Iterator i2 = set2.iterator();
+        while (i2.hasNext()) {
+            Map.Entry me2 = (Map.Entry) i2.next();
+            METHODNAME = new MetricDefinition(DataStoreDefinition.CYCLOMATIC_COMPLEXITY + me2.getKey().toString());
+            state.put(METHODNAME.getName(), Double.parseDouble(me2.getValue().toString()));
+        }
+        return state;
     }
 }
