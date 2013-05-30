@@ -22,11 +22,11 @@ public class NumberAttributes {
     
     @Test
     public void NumberAttributesByMethods() throws FileNotFoundException, IOException{
-        ReaderFile reader = new ReaderFile("src/Class/Classes.java");
+        ReaderFile reader = new ReaderFile("src/Class/Efference/EfferenceCoupling.java");
         Attribute numAttributes = new Attribute(reader);
-        ArrayList<Integer> listNumberAttributes = new ArrayList();
+        ArrayList<Integer> listNumberAttributes;
         listNumberAttributes = numAttributes.AttributeForMethodo();
-        
+
         for(int a=0; a<listNumberAttributes.size(); a++){
             System.out.println(listNumberAttributes.get(a));
         }

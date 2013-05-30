@@ -1,17 +1,11 @@
 package Methods.Atributtes;
 
-import Package.Entities.Semaphore;
-import Package.Utils.Util;
-import java.io.BufferedReader;
 import java.util.ArrayList;
 
 public class PreferencAttribute {
-     private Util util = new Util();
-     private BufferedReader br;
      private String line;
      private boolean onMethods = false;
-     private Semaphore semaphoreofattribute = new Semaphore();;
-     private ArrayList<String> listResulAttribute = new ArrayList<>();;
+     private ArrayList<String> listResulAttribute = new ArrayList<>();
      
      public PreferencAttribute(){ 
      }

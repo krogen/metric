@@ -1,7 +1,6 @@
 package Methods.ComplexCyclomatic.Selection;
 
 import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
-import Methods.ComplexCyclomatic.Iterator.NumberOfFor;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
 import Package.Files.ReaderMethod;

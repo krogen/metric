@@ -1,15 +1,14 @@
 package Methods.Methods;
 
-import Methods.Methods.Methods;
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import Package.Entities.Metric;
-import Package.Files.ReaderFile;
-import Package.Files.ReaderMethod;
 
 public final class MediaLinesMethods implements Metric {
 

@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NumberOfTry implements Metric {
+public final class NumberOfTry implements Metric {
 
     private FilesUtils fileutil = new FilesUtils();
     private int num = 0;

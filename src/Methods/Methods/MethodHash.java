@@ -1,9 +1,9 @@
 package Methods.Methods;
 
+import Package.Files.ReaderFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
-import Package.Files.ReaderFile;
 
 public class MethodHash {
 

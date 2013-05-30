@@ -18,7 +18,7 @@ public class NumberClass {
     public void totalNumberClass() throws FileNotFoundException, IOException{
         File folder = new File("src");
         FilesFolders numClasses = new FilesFolders(folder);
-        assertEquals(numClasses.getCount(), 58);
+        assertEquals(numClasses.getCount(), 56);
     }
     
     @Test

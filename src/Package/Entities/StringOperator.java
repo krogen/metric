@@ -1,9 +1,9 @@
 package Package.Entities;
 
 public class StringOperator {
+    
     private String[] patterns = {"public", "private", "protected"};
   
-    
     public boolean isConditionType(String line) {
         return (isPatternCondition(line)) ? true : false;
     }

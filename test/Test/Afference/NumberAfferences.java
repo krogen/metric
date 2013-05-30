@@ -32,6 +32,6 @@ public class NumberAfferences {
         ArrayList<String> arrayfiles = numfiles.getArrayListFiles();
         ReaderFile reader = new ReaderFile("src/Package/Utils/FilesUtils.java");
         AfferenceCoupling numAfferences = new AfferenceCoupling(arrayfiles, reader);
-        assertEquals(numAfferences.getCount(), 18);
+        assertEquals(numAfferences.getCount(), 16);
     }
 }

@@ -1,12 +1,12 @@
 package Methods.Lines;
 
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Package.Entities.Metric;
-import Package.Files.ReaderFile;
-import Package.Files.ReaderMethod;
 
 public final class LinesEffectives implements Metric {
 

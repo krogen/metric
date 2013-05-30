@@ -1,9 +1,9 @@
 package Package.Files;
 
+import Package.Entities.Metric;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import Package.Entities.Metric;
 
 public final class MediaSizeFiles implements Metric {
 

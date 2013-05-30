@@ -1,11 +1,11 @@
 package Methods.Atributtes;
 
 import Package.Entities.Semaphore;
+import Package.Entities.StringOperator;
 import Package.Utils.Util;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import Package.Entities.StringOperator;
 
 public class NumberAttributeformethods {
      private Util util = new Util();

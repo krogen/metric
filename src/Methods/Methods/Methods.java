@@ -1,13 +1,13 @@
 package Methods.Methods;
 
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Package.Entities.Metric;
-import Package.Files.ReaderFile;
-import Package.Files.ReaderMethod;
 
 public final class Methods implements Metric {
 

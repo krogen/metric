@@ -35,7 +35,6 @@ public class ComplexCyclomatic implements Metric {
                 complexcyclomatic.put(mh.getNameMethod(line), getNumComplex(readermethod));
             }
         }
-        //System.out.println("--------------------------");
         return complexcyclomatic;
     }
 

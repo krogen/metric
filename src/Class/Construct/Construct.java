@@ -62,6 +62,5 @@ public class Construct implements Metric{
     @Override
     public void count(ReaderMethod readermethod) {
         throw new UnsupportedOperationException("Not supported yet.");
-    }
-    
+    }   
 }

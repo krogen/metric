@@ -16,7 +16,7 @@ public class NumberPackages {
     public void totalNumberPackagesSRC() throws FileNotFoundException, IOException{
         File folder = new File("src");
         Packages numPackages = new Packages(folder);
-        assertEquals(numPackages.getCount(), 19);
+        assertEquals(numPackages.getCount(), 18);
     }
     
     @Test

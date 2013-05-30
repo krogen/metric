@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class NumberComplexCyclomatic {
@@ -23,7 +24,9 @@ public class NumberComplexCyclomatic {
         Iterator it = hm.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
-            System.out.println(e.getKey() + " " + e.getValue());
+            if(e.getKey().toString().contains("isImport(String line, int num)")){
+                assertEquals(e.getValue(), 2);
+            }
         }
     }
     
@@ -36,23 +39,9 @@ public class NumberComplexCyclomatic {
         Iterator it = hm.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry e = (Map.Entry)it.next();
-            System.out.println(e.getKey() + " " + e.getValue());
+            if(e.getKey().toString().contains("getCount()")){
+                assertEquals(e.getValue(), 0);
+            }
         }
     }
-    
-    /*@Test
-    public void NumberComplexCyclomatic3() throws FileNotFoundException, IOException{
-        
-        System.out.println("-------------");
-        HashMap hm;
-        ReaderFile reader = new ReaderFile("D:\\JAD\\Docs\\Proyectos\\JAVA\\NetBeans\\PractHPS\\src\\evaluator\\CalculatorSolver.java");
-        ComplexCyclomatic complexcyclomatic = new ComplexCyclomatic();        
-        hm = complexcyclomatic.getListMethodsCyclomaticComplex(reader);
-        Iterator it = hm.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry e = (Map.Entry)it.next();
-            System.out.println(e.getKey() + " " + e.getValue());
-        }
-    }*/
-    
 }

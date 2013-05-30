@@ -35,6 +35,7 @@ public class Parameter implements Metric{
 
     @Override
     public void count(ReaderFile readerfile) {
+        getArrayInfo(readerfile);
     }
 
     @Override

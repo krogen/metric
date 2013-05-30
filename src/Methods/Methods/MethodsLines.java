@@ -1,11 +1,11 @@
 package Methods.Methods;
 
-import java.util.HashMap;
 import Package.Entities.Metric;
 import Package.Files.ReaderFile;
 import Package.Files.ReaderMethod;
+import java.util.HashMap;
 
-public class MethodsLines implements Metric {
+public final class MethodsLines implements Metric {
 
     private int num = 0;
     

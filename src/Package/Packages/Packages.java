@@ -64,7 +64,7 @@ public final class Packages implements Metric {
 
     private boolean isFolderExists(File folder) {
         if (!folder.exists()) {
-            return true; //TODO:exception
+            return true;
         }
         return false;
     }

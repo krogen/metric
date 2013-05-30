@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Attribute implements Metric {
+public final class Attribute implements Metric {
 
     private String path;
     private ArrayList<String> list;

@@ -10,25 +10,40 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class EfferenceCoupling implements Metric {
+public final class EfferenceCoupling implements Metric {
 
+    private ReaderFile readerfile;
     private FilesUtils fileutil = new FilesUtils();
-    private int num = 0;
+    private int num = 0, numPackageEfferences;
 
     public EfferenceCoupling(ReaderMethod reader) {
         count(reader);
     }
 
     public EfferenceCoupling(ReaderFile readerfile) {
+        this.readerfile = readerfile;
         count(readerfile);
     }
 
     private int getImports(ReaderMethod readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "import Package.");
+        return fileutil.getFilePattern(readerfile, "import");
     }
 
-    private int getImports(ReaderFile readerfile) throws IOException {
-        return fileutil.getFilePattern(readerfile, "import Package.");
+    private int getImports(ReaderFile readerfile) throws IOException { 
+        String namepackage = getPackage(this.readerfile.getPath());
+        int numEfferences = fileutil.getFilePatternEfference(readerfile, namepackage.replaceFirst("/", "."));
+        numPackageEfferences = fileutil.getEfferencePackage();
+        return numEfferences;
+    }
+    
+    public int getPackageEfference(){
+        return numPackageEfferences;
+    }
+    
+    private String getPackage(String path){
+        String namepackage;
+        namepackage = limitString(path, 0);
+        return namepackage;
     }
 
     @Override
@@ -72,5 +87,32 @@ public class EfferenceCoupling implements Metric {
         } catch (IOException ex) {
             Logger.getLogger(NumberOfFor.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    private String limitString(String path, int n){
+        if(path.contains("\\")){
+            String namepackage = path.substring(path.compareTo("src\\")*-1, path.length());
+            return namepackage.substring(0, getLimitPathFinal(namepackage, n));
+        }else{
+            return path.substring(getLimitPathPrinciple(path)+1, getLimitPathFinal(path, n));
+        }
+    }
+
+    private int getLimitPathPrinciple(String path) {
+        for(int i=0; i < path.length(); i++){
+            if(path.charAt(i)=='/'){
+                return i;
+            }
+        }
+        return 0;
+    }
+    
+    private int getLimitPathFinal(String namepackage, int n) {
+        for(int i=0; i < namepackage.length(); i++){
+            if((namepackage.charAt(i)=='\\') || (namepackage.charAt(i)=='/')){
+                n = i;
+            } 
+        }
+        return n;
     }
 }

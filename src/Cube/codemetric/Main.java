@@ -7,19 +7,17 @@ import org.sumus.dwh.datastore.DataStore;
 import org.sumus.dwh.datastore.DataStoreException;
 
 public class Main {
-
+    
     public static void main(String[] args) throws DataStoreException, FileNotFoundException, IOException {
         String arguments[] = {"src", "dataStore"};
         init(arguments);
     }
 
     private static void init(String[] args) throws FileNotFoundException, DataStoreException, IOException {
+        createFolders();
         checkArgs(args);
         dataStoreDelete();
-        DataStore dataStore = createDataStore(new File(args[1]));
-        MockParser parser = new MockParser(dataStore);
-        parser.execute(new File(args[0]));
-        dataStore.save();
+        createParser(args);
     }
     
     private static DataStore createDataStore(File folder) {
@@ -80,5 +78,19 @@ public class Main {
             }
         }
         return childrenDeleted;
+    }
+    
+    private static void createFolders() {
+        File folder = new File("dataStore/CodeMetrics");
+        if(!folder.exists()){
+            folder.mkdirs();
+        } 
+    }
+    
+    private static void createParser(String[] args) throws IOException, DataStoreException {
+        DataStore dataStore = createDataStore(new File(args[1]));
+        Parser parser = new Parser(dataStore);
+        parser.execute(new File(args[0]));
+        dataStore.save();
     }
 }

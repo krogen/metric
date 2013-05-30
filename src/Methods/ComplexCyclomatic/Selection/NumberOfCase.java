@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NumberOfCase implements Metric {
+public final class NumberOfCase implements Metric {
 
     private FilesUtils fileutil = new FilesUtils();
     private int num = 0;

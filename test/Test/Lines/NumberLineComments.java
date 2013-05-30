@@ -27,17 +27,4 @@ public class NumberLineComments {
         assertEquals(numlinescomments.getCount(), 0);
     }
     
-    @Test
-    public void NumberBlockComments2() throws FileNotFoundException, IOException{
-        ReaderFile reader = new ReaderFile("src/Principal/Parser.java");
-        BlockComments numlinescomments = new BlockComments(reader);
-        assertEquals(numlinescomments.getCount(), 2);
-    }
-    
-    @Test
-    public void NumberLineComments2() throws FileNotFoundException, IOException{
-        ReaderFile reader = new ReaderFile("src/Principal/Parser.java");
-        LineComments numlinescomments = new LineComments(reader);
-        assertEquals(numlinescomments.getCount(), 4);
-    }
 }

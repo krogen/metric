@@ -1,18 +1,16 @@
 package Methods.Comments;
 
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Package.Entities.Metric;
-import Package.Files.ReaderFile;
-import Package.Files.ReaderMethod;
-import Package.Utils.FilesUtils;
 
-public class BlockComments implements Metric {
+public final class BlockComments implements Metric {
     
     private int num = 0;
-    private FilesUtils fileutil = new FilesUtils();
 
     public BlockComments(ReaderFile readerfile) {
         count(readerfile);

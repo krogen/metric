@@ -1,15 +1,15 @@
 package Methods.ComplexCyclomatic.Conditions;
 
+import Package.Entities.Metric;
+import Package.Files.ReaderFile;
+import Package.Files.ReaderMethod;
 import Package.Utils.FilesUtils;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import Package.Entities.Metric;
-import Package.Files.ReaderFile;
-import Package.Files.ReaderMethod;
 
-public class NumberOfIf implements Metric {
+public final class NumberOfIf implements Metric {
 
     private FilesUtils fileutil = new FilesUtils();
     private int num = 0;

@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class NumberOfImports implements Metric {
+public final class NumberOfImports implements Metric {
 
     private FilesUtils fileutil = new FilesUtils();
     private int num = 0;
